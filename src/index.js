@@ -1,17 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom'; // Import ReactDOM correctly
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; // Combine all imports in one line
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Navbar from './components/Navbar';
+import Content from './components/content';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <Router>
+    <React.StrictMode>
+      <Navbar />
+      <Switch>
+        <Route exact path="/" component={Content} />
+        <Route path="/app" component={App} />
+      </Switch>
+    </React.StrictMode>
+  </Router>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
